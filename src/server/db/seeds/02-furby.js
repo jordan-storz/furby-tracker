@@ -2,7 +2,7 @@
 exports.seed = function(knex, Promise) {
   return knex('furby').del()
     .then(function () {
-      knex.raw('ALTER SEQUENCE furby_id_seq RESTART WITH 11')
+      return knex.raw("ALTER SEQUENCE furby_id_seq RESTART WITH 11;")
     })
     .then(function () {
       return Promise.all([

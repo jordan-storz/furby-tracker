@@ -7,6 +7,24 @@ a {
   color: #00B7FF;
 }
 
+
 .furby-image {
-  max-height: 300px;
+  max-width: 85vw;
+}
+
+.furby-container {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding-top: 15px;
+}
+
+.furby-container article {
+  margin-top: 22px;
+}
+
+.furby-container article p {
+  font-size: 2rem;
+  font-weight: bold;
 }

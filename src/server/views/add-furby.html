@@ -1,6 +1,8 @@
-<form action="/furbies/new">
-  <label for="url">Enter image url</label>
-  <input type="text" name="url">
+<form action="/furbies" method="post">
+  <label for="image_url">Enter image url</label>
+  <input type="text" name="image_url">
   <label for="nickname">Optional Nickname</label>
   <input type="text" name="nickname">
+  <input type="hidden" value="{{user.id}}" name="user_id">
+  <input type="submit">
 </form>
