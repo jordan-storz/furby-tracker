@@ -27,11 +27,19 @@ router.post('/', function(req, res, next) {
 });
 
 router.put('/:id', function(req, res, next) {
-  console.log(req.body);
   controller.editFurby(req.params.id, req.body).then((furbyId) => {
     res.status(200).json({
       message: 'Furby updated!',
       redirectUrl: `/furbies/${furbyId}`
+    });
+  });
+});
+
+router.delete('/:id', function(req, res, next) {
+  controller.deleteFurby(req.params.id).then((data) => {
+    console.log(data);
+    res.json({
+      message: 'Furby deleted!',
     });
   });
 });

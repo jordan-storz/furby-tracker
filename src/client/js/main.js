@@ -1,7 +1,8 @@
 (function () {
 
   let $editForm = $('.furby-profile-info');
-  let $deleteBtn = $('.delete-button');
+  let $deleteUserBtn = $('.delete-user-button');
+  let $deleteFurbyBtn = $('.delete-furby-button');
 
   $editForm.on('submit', function(event) {
     event.preventDefault();
@@ -22,7 +23,7 @@
     });
   });
 
-  $deleteBtn.click(function(event) {
+  $deleteUserBtn.click(function(event) {
     let id = $(event.target).attr('data-id');
     event.preventDefault();
     let confirm = window.confirm('Delete user?');
@@ -32,6 +33,22 @@
         method: 'DELETE',
         success: function (data) {
           window.location.href = data.redirectUrl;
+        }
+      });
+    } else {
+      return;
+    }
+  });
+
+  $deleteFurbyBtn.click(function(event) {
+    let id = $(event.target).attr('data-id');
+    let confirm = window.confirm('Delete this Furby???');
+    if (confirm) {
+      $.ajax({
+        url: `/furbies/${id}`,
+        method: 'DELETE',
+        success: function (data) {
+          window.location.reload();
         }
       });
     } else {

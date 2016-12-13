@@ -22,5 +22,8 @@ module.exports = {
       .returning('id')
       .update(info)
       .then(data => Promise.resolve(data[0]));
+  },
+  deleteFurby: (id) => {
+    return knex('furby').where('id', id).del();
   }
 };
