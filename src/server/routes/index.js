@@ -16,33 +16,14 @@ router.get('/', function (req, res, next) {
 router.get('/users/:id', function(req, res, next) {
   let id = req.params.id;
   controller.findUserAndFurbies(id).then((data) => {
+    if (data.furbies.length === 0) {
+      data.furbies = null;
+    }
     res.render('user.html', {
       user: data.user,
       furbies: data.furbies
     });
   });
-
-
-
-  // let id = req.params.id;
-  // controller.findUserAndFurbies(id).then((data) => {
-  //   if (data.length === 0) {
-  //     controller.findUser(id).then((user) => {
-  //       console.log(user);
-  //       res.render('user.html', {
-  //         user: {
-  //           id: user.id,
-  //           user: user.username
-  //         }
-  //       });
-  //     });
-  //   } else {
-  //     res.render('user.html', {
-  //       username: data[0].username,
-  //       furbies: data
-  //     });
-  //   }
-  // });
 });
 
 router.post('/', function (req, res, next) {

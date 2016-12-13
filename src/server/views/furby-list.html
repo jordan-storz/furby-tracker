@@ -1,0 +1,18 @@
+<div class="furby-container">
+  {% if furbies %}
+    <h2>List of Your Furbies!</h2>
+    {% for furby in furbies %}
+      <article>
+        <img class="furby-image" src="{{furby.image_url}}" alt="furby">
+        {% if furby.nickname %}
+          <p>{{furby.nickname}}</p>
+        {% else %}
+          <p>[No nickname]<a href="/furbies/{{furby.id}}/edit">Give furby a nickname</a></p>
+        {% endif %}
+        <hr>
+      </article>
+    {% endfor %}
+  {% else %}
+    <h3>You have no furbies.</h3>
+  {% endif %}
+</div>
