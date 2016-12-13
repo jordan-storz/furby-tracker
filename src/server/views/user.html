@@ -1,0 +1,14 @@
+{% block content %}
+
+  <h1>{{username}}</h1>
+  {% include "add-furby.html" %}
+  {% if furbies %}
+    {% for furby in furbies %}
+      <img class="furby-image" src="{{furby.imageUrl}}" alt="furby">
+    {% endfor %}
+  {% else %}
+    <h3>You have no furbies.</h3>
+  {% endif %}
+
+
+{% endblock %}

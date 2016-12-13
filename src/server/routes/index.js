@@ -13,6 +13,23 @@ router.get('/', function (req, res, next) {
   });
 });
 
+router.get('/users/:id', function(req, res, next) {
+  let id = req.params.id;
+  controller.findUserAndFurbies(id).then((data) => {
+    if (data.length === 0) {
+      controller.findUser(id).then((user) => {
+        console.log(user);
+        res.render('user.html', {username: user.username});
+      });
+    } else {
+      res.render('user.html', {
+        username: data[0].username,
+        furbies: data
+      });
+    }
+  });
+});
+
 router.post('/', function (req, res, next) {
   let info = req.body;
   controller.createUser(info).then((newUser) => {
