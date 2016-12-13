@@ -1,11 +1,11 @@
 
 exports.up = function(knex, Promise) {
-  return knex.schema.createTable('user', (user) => {
+  return knex.schema.createTable('users', (user) => {
     user.increments();
     user.string('username').notNullable();
   });
 };
 
 exports.down = function(knex, Promise) {
-  return knex.schema.dropTableIfExists('user');
+  return knex.schema.dropTableIfExists('users');
 };

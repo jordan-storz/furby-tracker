@@ -4,9 +4,9 @@ exports.up = function(knex, Promise) {
     furby.increments();
     furby.string('image_url').notNullable();
     furby.string('nickname');
-    furby.integer('user_id');
+    furby.integer('user_id').notNullable();
     furby.foreign('user_id')
-      .references('id').inTable('user');
+      .references('id').inTable('users');
   });
 };
 
