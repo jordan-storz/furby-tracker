@@ -1,13 +1,21 @@
 {% extends "_base.html" %}
 
 {% block content %}
-<h1>Furby Profile</h1>
-<img src="{{furby.image_url}}" alt="furby" class="furby-image">
-{% if furby.nickname %}
-<h2>{{furby.nickname}}</h2>
-{% else %}
-<h2>No nickname</h2>
-<h3><a href="/furbies/{{furby.id}}/edit">Give furby a nickname</a></h3>
-{% endif %}
+<h1>
+  Furby Profile
+  <span class="owner-info">
+    (belongs to <a href="/users/{{furby.user_id}}">{{furby.username}}</a>)
+  </span>
+</h1>
+<hr>
+<div class="furby-profile-info">
+  <img src="{{furby.image_url}}" alt="furby" class="furby-image">
+  {% if furby.nickname %}
+  <h2>{{furby.nickname}}</h2>
+  {% else %}
+  <h2>[No nickname]</h2>
+  <h3><a href="/furbies/{{furby.id}}/edit">Give furby a nickname</a></h3>
+  {% endif %}
+</div>
 
 {% endblock %}

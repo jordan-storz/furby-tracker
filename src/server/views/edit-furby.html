@@ -1,0 +1,16 @@
+{% extends "_base.html" %}
+
+{% block content %}
+<h1>Give Furby Nickname</h1>
+<hr>
+<div class="furby-profile-info">
+  <img src="{{furby.image_url}}" alt="furby" class="furby-image">
+  <form action="/furbies" method="put" class="edit-furby">
+    <label for="nickname">Enter Nickname!</label>
+    <input type="text" name="nickname">
+    <input type="hidden" name="id" value="{{furby.id}}">
+    <input type="submit">
+  </form>
+</div>
+
+{% endblock %}

@@ -38,3 +38,21 @@ a {
   text-decoration: underline;
   color: black;
 }
+
+a.edit-link {
+  color: blue;
+  text-decoration: underline;
+}
+
+.furby-profile-info {
+  padding-top: 28px;
+}
+
+.owner-info {
+  color: green;
+}
+
+form.edit-furby {
+  margin-top: 2rem;
+  font-size: 3rem;
+}

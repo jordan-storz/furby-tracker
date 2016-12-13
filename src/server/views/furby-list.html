@@ -2,17 +2,21 @@
   {% if furbies %}
     <h2>List of Your Furbies!</h2>
     {% for furby in furbies %}
-      <a href="/furbies/{{furby.id}}">
       <article>
+        <a href="/furbies/{{furby.id}}">
         <img class="furby-image" src="{{furby.image_url}}" alt="furby">
         {% if furby.nickname %}
           <p>{{furby.nickname}}</p>
         {% else %}
-          <p>[No nickname]<a href="/furbies/{{furby.id}}/edit">Give furby a nickname</a></p>
+          <p>[No nickname]&nbsp;
+            <a href="/furbies/{{furby.id}}/edit" class="edit-link">
+              Give furby a nickname
+            </a>
+          </p>
         {% endif %}
+        </a>
         <hr>
       </article>
-      </a>
     {% endfor %}
   {% else %}
     <h3>You have no furbies.</h3>
