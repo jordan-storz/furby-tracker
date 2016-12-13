@@ -34,4 +34,13 @@ router.post('/', function (req, res, next) {
   });
 });
 
+router.delete('/users/:id', function(req, res, next) {
+  controller.deleteUser(req.params.id).then((data) => {
+    res.json({
+      message: 'User deleted!',
+      redirectUrl: '/'
+    });
+  });
+});
+
 module.exports = router;

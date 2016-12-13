@@ -8,10 +8,6 @@ module.exports = {
     return knex('users').returning('id', 'username').insert(info);
   },
   findUserAndFurbies: (id) => {
-    // return knex.select(
-    //   'users.id', 'users.username', 'furby.nickname as furbyNickName', 'furby.image_url as imageUrl'
-    // ).from('users').join('furby', 'furby.user_id', 'users.id').where('users.id', id);
-
     return knex('users').where('id', id).first().then((user) => {
       return knex('furby').where('user_id', id).then((furbies) => {
         return Promise.resolve({
@@ -23,5 +19,8 @@ module.exports = {
   },
   findUser: (id) => {
     return knex('users').where('id', id).first();
+  },
+  deleteUser: (id) => {
+    return knex('users').where('id', id).del();
   }
 };

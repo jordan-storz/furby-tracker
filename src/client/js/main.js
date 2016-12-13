@@ -1,6 +1,7 @@
 (function () {
 
   let $editForm = $('.furby-profile-info');
+  let $deleteBtn = $('.delete-button');
 
   $editForm.on('submit', function(event) {
     event.preventDefault();
@@ -19,6 +20,23 @@
         }
       }
     });
+  });
+
+  $deleteBtn.click(function(event) {
+    let id = $(event.target).attr('data-id');
+    event.preventDefault();
+    let confirm = window.confirm('Delete user?');
+    if (confirm) {
+      $.ajax({
+        url: `/users/${id}`,
+        method: 'DELETE',
+        success: function (data) {
+          window.location.href = data.redirectUrl;
+        }
+      });
+    } else {
+      return;
+    }
   });
 
 })();

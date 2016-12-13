@@ -6,7 +6,8 @@ exports.up = function(knex, Promise) {
     furby.string('nickname');
     furby.integer('user_id').notNullable();
     furby.foreign('user_id')
-      .references('id').inTable('users');
+      .references('id').inTable('users')
+      .onDelete('CASCADE');
   });
 };
 
