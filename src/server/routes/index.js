@@ -1,10 +1,24 @@
 const express = require('express');
 const router = express.Router();
 
-const indexController = require('../controllers/index');
+
+const controller = require('../controllers/index');
 
 router.get('/', function (req, res, next) {
-  res.render('index', {title: 'Furby Tracker'})
+  controller.findUsers().then((users) => {
+    res.render('index', {
+      title: 'Furby Tracker',
+      users
+    });
+  });
+});
+
+router.post('/', function (req, res, next) {
+  let info = req.body;
+  controller.createUser(info).then((newUser) => {
+    console.log(newUser[0]);
+    res.redirect(`/users/${newUser[0]}`);
+  });
 });
 
 module.exports = router;
