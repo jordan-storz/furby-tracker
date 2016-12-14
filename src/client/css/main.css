@@ -9,11 +9,17 @@ a {
 
 .users-container li {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  width: 45%;
 }
 
 .furby-image {
   max-width: 85vw;
+}
+
+.furby-image-small {
+  max-width: 15vw;
+  margin-top: 3rem;
 }
 
 .furby-container {
@@ -59,4 +65,47 @@ a.edit-link {
 form.edit-furby {
   margin-top: 2rem;
   font-size: 3rem;
+}
+
+.users-same-furby-button {
+  display: inline-block;
+  border: 2px solid black;
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 5px;
+  background-color: #64C0E9;
+}
+
+.users-same-furby-button:hover {
+  background-color: #BDEAF8;
+  text-decoration: none !important;
+}
+
+.furby-buttons-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.furby-buttons-container a,
+.furby-buttons-container button {
+  width: 45%;
+}
+
+.users-with-furby-container {
+  margin-top: 3rem;
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.users-with-furby-container a {
+  margin-top: 3rem;
+  font-size: 3rem;
+}
+
+.validation-error {
+  color: red;
 }

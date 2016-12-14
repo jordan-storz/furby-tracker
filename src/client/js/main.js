@@ -3,6 +3,8 @@
   let $editForm = $('.furby-profile-info');
   let $deleteUserBtn = $('.delete-user-button');
   let $deleteFurbyBtn = $('.delete-furby-button');
+  let $usernameInput = $('input[name="username"]');
+  let $urlInput = $('input[name="image_url"]');
 
   $editForm.on('submit', function(event) {
     event.preventDefault();
@@ -56,4 +58,14 @@
     }
   });
 
+  $usernameInput.on('keyup', function(event) {
+    console.log('something');
+    $('.validation-error').text('');
+  });
+
+  $urlInput.on('keyup', function(event) {
+    console.log('something');
+    $('.validation-error').text('');
+  });
+  
 })();

@@ -1,0 +1,12 @@
+{% extends "_base.html" %}
+
+{% block content %}
+
+<div class="users-with-furby-container">
+
+  <h1>Users with this Furby</h1>
+  <img src="{{furby.image_url}}" alt="furby" class="furby-image-small">
+  {% for user in users %}
+  <a href="/users/{{user.id}}">{{user.username}}</a>
+  {% endfor %}
+{% endblock %}

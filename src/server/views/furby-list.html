@@ -1,6 +1,6 @@
 <div class="furby-container">
   {% if furbies %}
-    <h2>List of Your Furbies!</h2>
+    <h2>List of {{user.username}}'s Furbies!</h2>
     {% for furby in furbies %}
       <article>
         <a href="/furbies/{{furby.id}}">
@@ -15,7 +15,12 @@
           </p>
         {% endif %}
         </a>
-        <button class="delete-furby-button" data-id="{{furby.id}}">DELETE FURBY</button>
+        <div class="furby-buttons-container">
+          <button class="delete-furby-button" data-id="{{furby.id}}">DELETE FURBY</button>
+          <a href="/users?furbyUrl={{furby.image_url}}" class="users-same-furby-button">
+            Users with same Furby URL
+          </a>
+        </div>
         <hr>
       </article>
     {% endfor %}

@@ -3,10 +3,19 @@
 <div>
   <h3>Username not in the list?</h3>
   <p>Enter a new username so you can begin tracking furbies pronto.</p>
-  <form action="/" method="post">
+  <form action="/users" method="post">
     <label for="username">Enter a new username:</label>
+    {% if attemptedName %}
+    <input type="text" name="username" value="{{attemptedName}}">
+    {% else %}
     <input type="text" name="username">
+    {% endif %}
     <input type="submit">
+    {% if validationMessage %}
+      <div class="validation-error">
+        {{validationMessage}}
+      </div>
+    {% endif %}
   </form>
 </div>
 

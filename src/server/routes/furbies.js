@@ -21,8 +21,13 @@ router.get('/:id/edit', function (req, res, next) {
 
 router.post('/', function(req, res, next) {
   let info = req.body;
+  if (!req.body.image_url) {
+    let message = 'A url is required!';
+    let url = `/users/${req.body['user_id']}?validationMessage=${message}`;
+    return res.redirect(url);
+  }
   controller.createFurby(info).then((furby) => {
-    res.redirect(`/users/${req.body['user_id']}`);
+    return res.redirect(`/users/${req.body['user_id']}`);
   });
 });
 
