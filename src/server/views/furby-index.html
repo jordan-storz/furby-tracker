@@ -1,0 +1,12 @@
+{% extends "_base.html" %}
+{% block content %}
+<div class="furby-index-container">
+  <h1>ALL FURBIES</h1>
+{% for furby in furbies %}
+  <a href="/furbies/{{furby.id}}">
+    <img src="{{furby.image_url}}" alt="furby" class="furby-image">
+    <h2>{{furby.nickname}}</h2>
+  </a>
+{% endfor %}
+</div>
+{% endblock %}

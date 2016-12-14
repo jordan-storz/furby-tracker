@@ -113,3 +113,21 @@ form.edit-furby {
 .success-message {
   color: green;
 }
+
+.furby-index-container {
+  text-align: center;
+}
+
+.furby-index-container h1 {
+  margin-bottom: 4rem;
+}
+
+.furbies-index-link {
+  display: inline-block;
+  border: 2px solid black;
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 5px;
+  background-color: #64C0E9;
+  color: white;
+}

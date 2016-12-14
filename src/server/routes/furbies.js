@@ -5,12 +5,14 @@ const controller = require('../controllers/furbies');
 
 
 function isValidUrl(url) {
-  let regex = /http:\/\/.*/g;
+  let regex = /https?:\/\/.*/g;
   return regex.test(url);
 }
 
 router.get('/', function (req, res, next) {
-  res.render('index', {title: 'Furby Tracker'})
+  controller.findAllFurbies().then((furbies) => {
+    res.render('furby-index', {furbies})
+  });
 });
 
 router.get('/:id', function (req, res, next) {

@@ -1,6 +1,9 @@
 const knex = require('../db/connection');
 
 module.exports = {
+  findAllFurbies: () => {
+    return knex('furby');
+  },
   findFurby: (id) => {
     return knex('furby').where('id', id).first().then((furby) => {
       return knex.select('username')
