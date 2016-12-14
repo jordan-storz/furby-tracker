@@ -1,4 +1,5 @@
 const databaseName = 'furby_tracker';
+require('dotenv').config();
 
 module.exports = {
   development: {
@@ -10,6 +11,10 @@ module.exports = {
     seeds: {
       directory: __dirname + '/src/server/db/seeds'
     }
+  },
+  production: {
+    client: 'postgresql',
+    connection: process.env.DATABASE_URL
   },
   test: {
     client: 'postgresql',
