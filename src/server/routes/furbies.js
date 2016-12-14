@@ -3,6 +3,12 @@ const router = express.Router();
 
 const controller = require('../controllers/furbies');
 
+
+function isValidUrl(url) {
+  let regex = /http:\/\/.*/g;
+  return regex.test(url);
+}
+
 router.get('/', function (req, res, next) {
   res.render('index', {title: 'Furby Tracker'})
 });
@@ -17,6 +23,18 @@ router.get('/:id/edit', function (req, res, next) {
   controller.findFurby(req.params.id).then((furby) => {
     res.render('edit-furby', {furby});
   });
+});
+
+router.post('/', function(req, res, next) {
+  if (!isValidUrl(req.body.image_url)) {
+    let message = 'Invalid URL!';
+    let attemptedUrl = req.body.image_url;
+    let url =
+      `/users/${req.body['user_id']}?validationMessage=${message}&attemptedUrl=${attemptedUrl}`;
+    return res.redirect(url);
+  } else {
+    next();
+  }
 });
 
 router.post('/', function(req, res, next) {

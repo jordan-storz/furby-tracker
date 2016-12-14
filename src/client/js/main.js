@@ -60,6 +60,7 @@
 
   $usernameInput.on('keyup', function(event) {
     $('.validation-error').text('');
+    $('.success-message').text('');
   });
 
   $urlInput.on('keyup', function(event) {

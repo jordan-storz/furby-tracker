@@ -4,6 +4,10 @@ const router = express.Router();
 
 const controller = require('../controllers/users');
 
+function queryUrlPackager(req) {
+  let url
+}
+
 router.get('/', function (req, res, next) {
   if (req.query.furbyUrl) {
     controller.findUsersWithFurbyUrl(req.query.furbyUrl).then((data) => {
@@ -26,6 +30,7 @@ router.get('/', function (req, res, next) {
   }
 });
 
+
 router.get('/:id', function(req, res, next) {
   let id = req.params.id;
   let validationMessage = req.query.validationMessage || null;
@@ -47,7 +52,6 @@ router.get('/:id', function(req, res, next) {
 
 router.post('/', function (req, res, next) {
   let info = req.body;
-  console.log(info);
   if (!req.body.username) {
     let queryValidationMessage = 'Username required';
     res.status(500).redirect(`/users?validationMessage=${queryValidationMessage}`);
@@ -57,7 +61,7 @@ router.post('/', function (req, res, next) {
     }).catch((error) => {
       if (error.detail.includes('already exists')) {
         let message = 'Username is taken. Try another?';
-        res.redirect(`/users?validationMessage=${message}&attemptedName=${req.body.username}`);
+        res.status(500).redirect(`/users?validationMessage=${message}&attemptedName=${req.body.username}`);
       }
     });
   }
