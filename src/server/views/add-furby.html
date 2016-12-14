@@ -1,13 +1,14 @@
 <form action="/furbies" method="post">
   <label for="image_url">Enter image url</label>
-  <input type="text" name="image_url">
+  <input type="text" name="image_url" value="{{attemptedUrl}}">
   <label for="nickname">Optional Nickname</label>
   <input type="text" name="nickname">
   <input type="hidden" value="{{user.id}}" name="user_id">
   <input type="submit">
-  {% if validationMessage %}
   <div class="validation-error">
     {{validationMessage}}
   </div>
-  {% endif %}
+  <div class="success-message">
+    {{successMessage}}
+  </div>
 </form>

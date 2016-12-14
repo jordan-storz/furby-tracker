@@ -29,6 +29,8 @@ router.get('/', function (req, res, next) {
 router.get('/:id', function(req, res, next) {
   let id = req.params.id;
   let validationMessage = req.query.validationMessage || null;
+  let attemptedUrl = req.query.attemptedUrl || null;
+  let successMessage = req.query.successMessage || null;
   controller.findUserAndFurbies(id).then((data) => {
     if (data.furbies.length === 0) {
       data.furbies = null;
@@ -36,7 +38,9 @@ router.get('/:id', function(req, res, next) {
     res.render('user.html', {
       user: data.user,
       furbies: data.furbies,
-      validationMessage
+      validationMessage,
+      attemptedUrl,
+      successMessage
     });
   });
 });

@@ -109,3 +109,7 @@ form.edit-furby {
 .validation-error {
   color: red;
 }
+
+.success-message {
+  color: green;
+}

@@ -14,7 +14,16 @@ module.exports = {
     });
   },
   createFurby: (info) => {
-    return knex('furby').insert(info);
+    return knex('furby')
+      .where('image_url', info.image_url)
+      .where('user_id', info.user_id)
+      .then((furbies) => {
+        if (furbies.length === 0) {
+          return knex('furby').insert(info);
+        } else {
+          return Promise.reject('User has furby already');
+        }
+      });
   },
   editFurby: (id, info) => {
     return knex('furby')

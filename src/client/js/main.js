@@ -59,13 +59,12 @@
   });
 
   $usernameInput.on('keyup', function(event) {
-    console.log('something');
     $('.validation-error').text('');
   });
 
   $urlInput.on('keyup', function(event) {
-    console.log('something');
     $('.validation-error').text('');
+    $('.success-message').text('');
   });
-  
+
 })();

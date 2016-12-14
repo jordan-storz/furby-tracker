@@ -9,7 +9,7 @@ module.exports = {
   },
   findUserAndFurbies: (id) => {
     return knex('users').where('id', id).first().then((user) => {
-      return knex('furby').where('user_id', id).then((furbies) => {
+      return knex('furby').where('user_id', id).orderBy('id', 'desc').then((furbies) => {
         return Promise.resolve({
           user,
           furbies

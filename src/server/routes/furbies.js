@@ -27,7 +27,15 @@ router.post('/', function(req, res, next) {
     return res.redirect(url);
   }
   controller.createFurby(info).then((furby) => {
-    return res.redirect(`/users/${req.body['user_id']}`);
+    let successMessage = 'Furby created!';
+    let url = `/users/${req.body['user_id']}?successMessage=${successMessage}`;
+    return res.status(200).redirect(url);
+  }).catch((error) => {
+    let message = 'User already has this furby!';
+    let attemptedUrl = info.image_url;
+    let url =
+      `/users/${req.body['user_id']}?validationMessage=${message}&attemptedUrl=${attemptedUrl}`;
+    return res.redirect(url);
   });
 });
 
